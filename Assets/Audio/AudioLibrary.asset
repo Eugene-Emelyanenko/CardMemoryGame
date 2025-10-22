@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48de26194dd544fa9810ce664a1691, type: 3}
+  m_Name: AudioLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::Audio.AudioLibrary
+  music:
+  - id: MainMenu
+    clip: {fileID: 8300000, guid: 04f27e17f5e3ca24c9148c388e7d341d, type: 3}
+  - id: Game
+    clip: {fileID: 8300000, guid: 8d08d638ea1edcd46a7e3a46abc549f7, type: 3}
+  sfx:
+  - id: Click
+    clip: {fileID: 8300000, guid: 6f50495a173dd2240ab920778b2b9eb7, type: 3}
+    baseVolume: 1

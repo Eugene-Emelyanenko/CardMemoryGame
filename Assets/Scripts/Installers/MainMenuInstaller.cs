@@ -15,24 +15,30 @@ namespace Installers
 
         public override void InstallBindings()
         {
-            // Декларации сигналов
             Container.DeclareSignal<MainMenuSignals.PlayClicked>();
             Container.DeclareSignal<MainMenuSignals.SettingsClicked>();
             Container.DeclareSignal<SettingsSignals.MusicChanged>();
             Container.DeclareSignal<SettingsSignals.SfxChanged>();
+            Container.DeclareSignal<SettingsSignals.MasterChanged>();
             Container.DeclareSignal<SettingsSignals.BackClicked>();
-
-            // Views из сцены
+            
+            BindMainMenu();
+            
+            BindSettings();
+        }
+        
+        private void BindMainMenu()
+        {
             Container.Bind<MainMenuView>().FromInstance(mainMenuView).AsSingle();
-            Container.Bind<SettingsView>().FromInstance(settingsView).AsSingle();
-
-            // Models
             Container.Bind<MainMenuModel>().AsSingle();
-            Container.Bind<SettingsModel>().AsSingle();
-
-            // Controllers (как InterfacesAndSelf → вызов Initialize())
-            Container.BindInterfacesAndSelfTo<SettingsController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<MainMenuController>().AsSingle().NonLazy();
+        }
+
+        private void BindSettings()
+        {
+            Container.Bind<SettingsView>().FromInstance(settingsView).AsSingle();
+            Container.Bind<SettingsModel>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SettingsController>().AsSingle().NonLazy();
         }
     }
 }

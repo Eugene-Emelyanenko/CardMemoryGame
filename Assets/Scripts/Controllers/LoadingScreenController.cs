@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using Base;
-using DontDestroyOnLoad;
 using Models;
 using UnityEngine;
 using Views;

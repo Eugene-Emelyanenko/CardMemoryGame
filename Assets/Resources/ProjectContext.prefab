@@ -75,3 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Installers.GlobalInstaller
   loadingScreenPrefab: {fileID: 5382732115612244833, guid: 0e61b124ad0204f408bb43337d8dd3cb, type: 3}
+  audioLibrary: {fileID: 11400000, guid: 2e76f4617fb7d324ba4fca4344588112, type: 2}
+  audioMixerRefs:
+    <Master>k__BackingField: {fileID: 24300002, guid: daab0ee2e6eb1694a8db39b65a15cee9, type: 2}
+    <Music>k__BackingField: {fileID: 8519063553826128891, guid: daab0ee2e6eb1694a8db39b65a15cee9, type: 2}
+    <Sfx>k__BackingField: {fileID: 6619321153541391517, guid: daab0ee2e6eb1694a8db39b65a15cee9, type: 2}

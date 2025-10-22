@@ -44,11 +44,14 @@ namespace Controllers
         
         private void OnPlay(MainMenuSignals.PlayClicked _)
         {
+            Bus.Fire(new AudioSignals.PlaySfx("Click"));
+            Bus.Fire(new AudioSignals.PlayMusic("Game", fade: 0.6f));
             _loading.LoadScene(Model.TargetGameScene);
         }
 
         private void OnSettings(MainMenuSignals.SettingsClicked _)
         {
+            Bus.Fire(new AudioSignals.PlaySfx("Click"));
             View.Hide(0f);
         }
     }

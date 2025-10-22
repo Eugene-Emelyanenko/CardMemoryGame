@@ -8,17 +8,29 @@ namespace Views
 {
     public class SettingsView : View
     {
+        [Header("Music")]
         [SerializeField] private Slider musicSlider;
-        [SerializeField] private Slider sfxSlider;
-        [SerializeField] private Button backButton;
         [SerializeField] private TextMeshProUGUI musicValueText;
+        
+        [Header("Sfx")]
+        [SerializeField] private Slider sfxSlider;
         [SerializeField] private TextMeshProUGUI sfxValueText;
+        
+        [Header("Master")]
+        [SerializeField] private Slider masterSlider;
+        [SerializeField] private TextMeshProUGUI masterValueText;
+        
+        [Header("Other")]
+        [SerializeField] private Button backButton;
 
         public override void Bind()
         {
             base.Bind();
+            
             musicSlider.onValueChanged.AddListener(HandleMusic);
             sfxSlider.onValueChanged.AddListener(HandleSfx);
+            masterSlider.onValueChanged.AddListener(HandleMaster);
+            
             backButton.onClick.AddListener(HandleBack);
         }
 
@@ -26,7 +38,10 @@ namespace Views
         {
             musicSlider.onValueChanged.RemoveListener(HandleMusic);
             sfxSlider.onValueChanged.RemoveListener(HandleSfx);
+            masterSlider.onValueChanged.RemoveListener(HandleMaster);
+            
             backButton.onClick.RemoveListener(HandleBack);
+            
             base.Unbind();
         }
 
@@ -41,6 +56,12 @@ namespace Views
             sfxSlider.SetValueWithoutNotify(v);
             sfxValueText.text = Mathf.RoundToInt(v * 100) + "%";
         }
+        
+        public void SetMasterValue(float v)
+        {
+            masterSlider.SetValueWithoutNotify(v);
+            masterValueText.text = Mathf.RoundToInt(v * 100) + "%";
+        }
 
         private void HandleMusic(float v)
         {
@@ -52,6 +73,12 @@ namespace Views
         {
             Bus.Fire(new SettingsSignals.SfxChanged(v));
             SetSfxValue(v);
+        }
+        
+        private void HandleMaster(float v)
+        {
+            Bus.Fire(new SettingsSignals.MasterChanged(v));
+            SetMasterValue(v);
         }
 
         private void HandleBack() => Bus.Fire(new SettingsSignals.BackClicked());
