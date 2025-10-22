@@ -14,29 +14,25 @@ namespace Installers
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
-            
-            BindGlobalCoroutineRunner();
-            
-            BindLoadingScreen();
-        }
 
-        private void BindGlobalCoroutineRunner()
-        {
+            // Global coroutine runner
             Container.Bind<GlobalCoroutineRunner>()
                 .FromNewComponentOnNewGameObject()
                 .AsSingle()
                 .NonLazy();
-        }
 
-        private void BindLoadingScreen()
-        {
+            // Loading Screen (одна копия)
             Container.Bind<LoadingScreenView>()
                 .FromComponentInNewPrefab(loadingScreenPrefab)
                 .AsSingle()
                 .NonLazy();
-            
+
             Container.Bind<LoadingScreenModel>().AsSingle();
-            Container.Bind<LoadingScreenController>().AsSingle().NonLazy();
+
+            // Важно: как InterfacesAndSelf, чтобы вызывался Initialize/Dispose
+            Container.BindInterfacesAndSelfTo<LoadingScreenController>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

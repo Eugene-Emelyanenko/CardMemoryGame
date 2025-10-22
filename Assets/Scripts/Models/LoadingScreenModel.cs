@@ -10,8 +10,6 @@ namespace Models
 {
     public class LoadingScreenModel : Model
     {
-        public LoadingScreenModel(SignalBus signalBus) : base(signalBus) { }
-
         public IEnumerator LoadSceneRoutine(
             string sceneName,
             Action<float> onProgress,

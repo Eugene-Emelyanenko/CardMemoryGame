@@ -16,16 +16,17 @@ namespace Controllers
         public LoadingScreenController(
             LoadingScreenModel model,
             LoadingScreenView view,
-            SignalBus signalBus,
             GlobalCoroutineRunner runner)
-            : base(model, view, signalBus)
+            : base(model, view)
         {
             _runner = runner;
         }
 
         public override void Initialize()
         {
-            View.Hide();
+            base.Initialize();
+            
+            View.Hide(0f);
         }
 
         public void LoadScene(string sceneName, Action onCompleted = null)
