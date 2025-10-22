@@ -45,8 +45,7 @@ namespace Controllers
         private void OnPlay(MainMenuSignals.PlayClicked _)
         {
             Bus.Fire(new AudioSignals.PlaySfx("Click"));
-            Bus.Fire(new AudioSignals.PlayMusic("Game", fade: 0.6f));
-            _loading.LoadScene(Model.TargetGameScene);
+            _loading.LoadScene(Model.TargetGameScene, () => Bus.Fire(new AudioSignals.PlayMusic("Game", fade: 0.6f)));
         }
 
         private void OnSettings(MainMenuSignals.SettingsClicked _)

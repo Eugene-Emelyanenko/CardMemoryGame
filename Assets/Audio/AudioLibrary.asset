@@ -21,3 +21,12 @@ MonoBehaviour:
   - id: Click
     clip: {fileID: 8300000, guid: 6f50495a173dd2240ab920778b2b9eb7, type: 3}
     baseVolume: 1
+  - id: Correct
+    clip: {fileID: 8300000, guid: 53c9b8b782185634fa1f98bcbd216a07, type: 3}
+    baseVolume: 1
+  - id: Wrong
+    clip: {fileID: 8300000, guid: 2b0c983f787867743adc7f75fd8b10e5, type: 3}
+    baseVolume: 1
+  - id: Win
+    clip: {fileID: 8300000, guid: ac0fe818b14f7c142bca5f410d91b3f6, type: 3}
+    baseVolume: 1

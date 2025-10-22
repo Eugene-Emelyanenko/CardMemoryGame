@@ -53,7 +53,7 @@ namespace Controllers
         private void OnMenu(PauseSignals.MenuClicked _)
         {
             Bus.Fire(new AudioSignals.PlaySfx("Click"));
-            _loading.LoadScene(Model.TargetGameScene);
+            _loading.LoadScene(Model.TargetGameScene, () => Bus.Fire(new AudioSignals.PlayMusic("MainMenu", fade: 0.6f)));
         }
     }
 }

@@ -42,6 +42,7 @@ namespace Base
             fadeTween = canvasGroup
                 .DOFade(1f, duration)
                 .SetEase(Ease.OutQuad)
+                .SetUpdate(true)
                 .OnComplete(() =>
                 {
                     
@@ -58,6 +59,7 @@ namespace Base
             fadeTween = canvasGroup
                 .DOFade(0f, duration)
                 .SetEase(Ease.OutQuad)
+                .SetUpdate(true)
                 .OnComplete(() =>
                 {
                     canvasGroup.blocksRaycasts = false;

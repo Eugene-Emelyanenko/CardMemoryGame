@@ -11,9 +11,22 @@ namespace Installers
     {
         [Header("Scene Views")]
         [SerializeField] private PauseView pauseView;
+
+        [SerializeField] private CardGameView cardGameView;
         public override void InstallBindings()
         {
+            BindCardGame();
+            
             BindPause();
+        }
+
+        private void BindCardGame()
+        {
+            Container.DeclareSignal<CardGameSignals.CardClicked>();
+            
+            Container.Bind<CardGameView>().FromInstance(cardGameView).AsSingle();
+            Container.Bind<CardGameModel>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CardGameController>().AsSingle().NonLazy();
         }
 
         private void BindPause()

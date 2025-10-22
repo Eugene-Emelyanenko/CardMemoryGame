@@ -1,5 +1,6 @@
 using Audio;
 using Controllers;
+using Global;
 using Models;
 using Signals;
 using UnityEngine;
@@ -27,6 +28,8 @@ namespace Installers
             BindLoadingScreen();
             
             BindAudio();
+            
+            Container.Bind<SpriteStorage>().AsSingle();
         }
 
         private void BindGlobalCoroutineRunner()

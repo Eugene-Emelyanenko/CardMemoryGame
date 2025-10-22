@@ -1,24 +1,36 @@
 using Controllers;
+using Global;
+using Models;
 using Signals;
-using UnityEngine;
 using Zenject;
 
 public sealed class Bootstrap : IInitializable
 {
     private readonly LoadingScreenController _loading;
-    private readonly string _targetScene;
-    private readonly SignalBus Bus;
+    private readonly SpriteStorage _storage;
+    private readonly SignalBus _bus;
     
-    public Bootstrap(LoadingScreenController loading, SignalBus signalBus, string sceneName = "MainMenu")
+    private readonly string _targetScene;
+
+    public Bootstrap(
+        LoadingScreenController loading,
+        SpriteStorage storage,
+        SignalBus bus,
+        string sceneName = "MainMenu")
     {
         _loading = loading;
-        Bus = signalBus;
+        _storage = storage;
+        _bus = bus;
         _targetScene = sceneName;
     }
 
     public void Initialize()
     {
-        Bus.Fire(new AudioSignals.PlayMusic("MainMenu", fade: 0.6f));
-        _loading.LoadScene(_targetScene);
+        _bus.Fire(new AudioSignals.PlayMusic("MainMenu", fade: 0.6f));
+
+        _loading.LoadScene(
+            sceneName: _targetScene,
+            extraTask: _storage.PreloadAll()
+        );
     }
 }
