@@ -9,7 +9,7 @@ namespace Global
     public class SpriteStorage
     {
         private const string JSON_URL =
-            "https://drive.google.com/uc?export=download&id=1LWxIfZfMcw-PMR8TaUjkiZG_glv-TdzL";
+            "https://drive.google.com/uc?export=download&id=1f1XtAltdEhAaTKlSY6GvoKGwz6rZjc5m";
 
         private const int MaxConcurrentDownloads = 4;
 
