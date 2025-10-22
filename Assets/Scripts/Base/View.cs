@@ -29,33 +29,37 @@ namespace Base
             _isBound = false;
         }
 
-        public void Show(float duration = 1f)
+        public void Show(float duration = 0.75f)
         {
             fadeTween?.Kill();
             canvasGroup.alpha = 0f;
             
             gameObject.SetActive(true);
-            canvasGroup.interactable = true;
+            
             canvasGroup.blocksRaycasts = true;
+            canvasGroup.interactable = true;
 
             fadeTween = canvasGroup
                 .DOFade(1f, duration)
                 .SetEase(Ease.OutQuad)
-                .SetUpdate(true)
+                .OnComplete(() =>
+                {
+                    
+                })
                 .SetLink(gameObject);
         }
 
-        public void Hide(float duration = 1f)
+        public void Hide(float duration = 0.5f)
         {
             fadeTween?.Kill();
+            
+            canvasGroup.interactable = false;
             
             fadeTween = canvasGroup
                 .DOFade(0f, duration)
                 .SetEase(Ease.OutQuad)
-                .SetUpdate(true)
                 .OnComplete(() =>
                 {
-                    canvasGroup.interactable = false;
                     canvasGroup.blocksRaycasts = false;
                     gameObject.SetActive(false);
                 })

@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4319418269415674773}
   - component: {fileID: 7084566645282164329}
   - component: {fileID: 3573869145678840976}
+  - component: {fileID: 6275572772684930515}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -250,7 +251,23 @@ MonoBehaviour:
   canvasGroup: {fileID: 7084566645282164329}
   loadingBar: {fileID: 9030015826900210438}
   loadingText: {fileID: 5346008559056070730}
-  fadeDuration: 1
+--- !u!114 &6275572772684930515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382732115612244833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &7002622435373778264
 GameObject:
   m_ObjectHideFlags: 0
