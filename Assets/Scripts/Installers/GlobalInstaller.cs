@@ -19,6 +19,9 @@ namespace Installers
         [SerializeField] private AudioLibrary audioLibrary;
         [SerializeField] private AudioMixerRefs audioMixerRefs;
 
+        [Header("FPS")] 
+        [SerializeField] private int targetFrameRate = 120;
+
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
@@ -29,7 +32,17 @@ namespace Installers
             
             BindAudio();
             
+            BindFps();
+            
             Container.Bind<SpriteStorage>().AsSingle();
+        }
+        
+        private void BindFps()
+        {
+            Container.BindInterfacesAndSelfTo<FpsConfig>()
+                .AsSingle()
+                .WithArguments(targetFrameRate)
+                .NonLazy();
         }
 
         private void BindGlobalCoroutineRunner()
